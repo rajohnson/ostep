@@ -9,7 +9,7 @@ int main(void)
 
     if (pid == 0)
     {
-        execvp("/bin/ls", (char *[]){"ls", "-l", NULL});
+        execvpe("/bin/ls", (char *[]){"ls", "-l", NULL});
         return 0;
     }
     else
