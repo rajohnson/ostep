@@ -9,14 +9,12 @@ int main(void)
 
     if (pid == 0)
     {
-        printf("hello\n");
+        execl("/bin/ls", "ls", "-l", NULL);
         return 0;
     }
     else
     {
-        for (volatile int i = 0; i < 1000000; i++)
-        {
-        }
+        wait(NULL);
         printf("goodbye\n");
     }
 
