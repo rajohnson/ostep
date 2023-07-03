@@ -4,7 +4,24 @@
 int main(void)
 {
     int x = 1;
+    FILE *fp = fopen("fork_output.txt", "w");
     int pid = fork();
+
+    if (pid < 0)
+    {
+        fprintf(fp, "Fork failed\n");
+        return 1;
+    }
+    else if (pid == 0)
+    {
+        // Child process
+        fprintf(fp, "Child process\n");
+    }
+    else
+    {
+        // Parent process
+        fprintf(fp, "Parent process\n");
+    }
 
     for (int i = 0; i < 100; i++)
     {
