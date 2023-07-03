@@ -5,35 +5,19 @@
 int main(void)
 {
     int x = 1;
-    FILE *fp = fopen("fork_output.txt", "w");
     int pid = fork();
 
-    if (pid < 0)
+    if (pid == 0)
     {
-        fprintf(fp, "Fork failed\n");
-        return 1;
+        printf("hello\n");
+        return 0;
     }
-
-    for (int i = 0; i < 10000; i++)
+    else
     {
-        printf("x: %d, pid: %d\n", x++, pid);
-
-        if (pid == 0)
+        for (volatile int i = 0; i < 1000000; i++)
         {
-            // Child process
-            fprintf(fp, "Child process\n");
         }
-        else
-        {
-            // Parent process
-            fprintf(fp, "Parent process\n");
-        }
-    }
-
-    if (pid != 0)
-    {
-        wait(NULL);
-        fclose(fp);
+        printf("goodbye\n");
     }
 
     return 0;
