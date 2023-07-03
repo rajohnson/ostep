@@ -13,20 +13,21 @@ int main(void)
         fprintf(fp, "Fork failed\n");
         return 1;
     }
-    else if (pid == 0)
-    {
-        // Child process
-        fprintf(fp, "Child process\n");
-    }
-    else
-    {
-        // Parent process
-        fprintf(fp, "Parent process\n");
-    }
 
     for (int i = 0; i < 100; i++)
     {
         printf("x: %d, pid: %d\n", x++, pid);
+
+        if (pid == 0)
+        {
+            // Child process
+            fprintf(fp, "Child process\n");
+        }
+        else
+        {
+            // Parent process
+            fprintf(fp, "Parent process\n");
+        }
     }
 
     if (pid != 0)
