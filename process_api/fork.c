@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 int main(void)
 {
@@ -26,6 +27,12 @@ int main(void)
     for (int i = 0; i < 100; i++)
     {
         printf("x: %d, pid: %d\n", x++, pid);
+    }
+
+    if (pid != 0)
+    {
+        wait(NULL);
+        fclose(fp);
     }
 
     return 0;
