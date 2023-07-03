@@ -4,11 +4,11 @@
 
 int main(void)
 {
-    int x = 1;
     int pid = fork();
 
     if (pid == 0)
     {
+        fclose((FILE *)STDOUT_FILENO);
         printf("child\n");
         int result = wait(NULL);
         printf("result: %d\n", result);
