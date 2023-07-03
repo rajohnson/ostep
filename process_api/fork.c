@@ -9,13 +9,16 @@ int main(void)
 
     if (pid == 0)
     {
-        execvpe("/bin/ls", (char *[]){"ls", "-l", NULL});
+        printf("child\n");
+        int result = wait(NULL);
+        printf("result: %d\n", result);
+
         return 0;
     }
     else
     {
         wait(NULL);
-        printf("goodbye\n");
+        printf("parent\n");
     }
 
     return 0;
